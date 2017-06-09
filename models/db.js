@@ -1,5 +1,26 @@
-var settings = require('../settings'),
-    Db = require('mongodb').Db,
-    Connection = require('mongodb').Connection,
-    Server = require('mongodb').Server;
-module.exports = new Db(settings.db, new Server(settings.host, settings.port),{safe: true});
+// var settings = require('../settings'),
+//     Db = require('mongodb').Db,
+//     Connection = require('mongodb').Connection,
+//     Server = require('mongodb').Server;
+// module.exports = new Db(settings.db, new Server(settings.host, settings.port),{safe: true});
+// var mongoose = require('mongoose');
+// 	mongoose.connect('mongodb://localhost:27017/myblog');
+var MongoClient = require('mongodb').MongoClient,
+    assert = require('assert');
+
+var url = "mongodb://localhost:27017/blog"
+
+module.exports = function(name, callback) {
+    MongoClient.connect(url, function(err, db) {
+        assert.equal(null, err)
+
+        var collection = db.collection(name)
+        if (typeof collection === 'undefined') {
+            db.createCollection(name)
+            collection = db.collection(name)
+        }
+        if (typeof callback === 'function') {
+            callback(db, collection)
+        }
+    })
+}
