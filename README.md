@@ -4,6 +4,7 @@ the-blog
 ## 介绍
 
 使用nodejs,express,mongodb,ejs快速开发多人博客
+使用socket.io搭建多人聊天室
 
 ## 安装部署
 
