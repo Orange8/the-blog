@@ -20,6 +20,9 @@ var login_json = require("../controller/login_json");
 var post = require("../controller/post");
 var post_json = require("../controller/post_json");
 
+//聊天窗口控制器
+var chart = require("../controller/chart");
+
 //上传控制器
 var upload = require("../controller/upload");
 var upload_json = require("../controller/upload_json");
@@ -42,6 +45,9 @@ router.post('/login',middleware_checklogin, login_json);
 //post界面
 router.get('/post',middleware_checkUnlogin, post);
 router.post('/post',middleware_checkUnlogin, post_json);
+
+//聊天窗口界面
+router.get("/chart",middleware_checkUnlogin, chart);
 
 //上传界面
 router.get('/upload',middleware_checkUnlogin, upload);

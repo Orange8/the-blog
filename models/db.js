@@ -1,10 +1,3 @@
-// var settings = require('../settings'),
-//     Db = require('mongodb').Db,
-//     Connection = require('mongodb').Connection,
-//     Server = require('mongodb').Server;
-// module.exports = new Db(settings.db, new Server(settings.host, settings.port),{safe: true});
-// var mongoose = require('mongoose');
-// 	mongoose.connect('mongodb://localhost:27017/myblog');
 var MongoClient = require('mongodb').MongoClient,
     assert = require('assert');
 
